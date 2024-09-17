@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.png">
+    <title>Algoritmi Fundamentali</title>
+</head>
+<body>
+    <header>
+        <div class="container grid">
+            <div class="logo flex">
+                <a href=""><img src="images/logo_white.png" alt="logo"></a>
+                <h1><a href="index.html">Algoritmi Fundamentali</a></h1>
+            </div>
+            <div class="mobile-menu flex">
+                <ul>
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="algoritmi_elementari.html">Elementari</a></li>
+                    <li><a href="algoritmi_de_sortare.html">Sortare</a></li>
+                    <li><a href="algoritmi_de_cautare.html">Căutare</a></li>
+                    <li><a href="complexitatea_algoritmilor.html">Complexitate</a></li>
+                </ul>
+            </div>
+            <nav class="small-nav">
+                <div class="ham-menu-button">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+            <nav class="big-nav">
+                <ul class="flex">
+                    <li><a href="index.html">Acasă</a></li>
+                    <li><a href="algoritmi_elementari.html">Elementari</a></li>
+                    <li><a href="algoritmi_de_sortare.html">Sortare</a></li>
+                    <li><a href="algoritmi_de_cautare.html">Căutare</a></li>
+                    <li><a href="complexitatea_algoritmilor.html">Complexitate</a></li>
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+    <main>
+        <div class="container">
+            <div class="alg-page alg-complexity">
+                <h1>Complexitatea algoritmilor</h1>
+                <i class="img"></i>
+            </div>
+            <div class="alg-articles">
+                <article>
+                    <h2>I. Complexitatea temporala</h2>
+                    <p>În general, pentru analiza complexității unui algoritm, din punct de vederea al timpului de executare, nu se calculează numărul tuturor operațiilor pe care algoritmul le efectuează, ci se calculează numărul operațiilor importante, numite operații de bază(atribuire, operații aritmetice sau logice comparații), de care depinde timpul de rulare al algoritmului.</p>
+                    <p>Etapele analizei eficienței de timp:</p>
+                    <ul>
+                        <li><b>Pasul 1</b>: se identifică dimensiunea problemei;</li>
+                        <li><b>Pasul 2:</b> se identifică operația de bază/dominantă;</li>
+                        <li><b>Pasul 3:</b> se determină numărul de execuții ale operației de bază;</li>
+                        <li><b>Pasul 4:</b> dacă numărul de execuții ale operației de bază depinde de proprietățile datelor de intrare atunci se analizează cazul cel mai defavorabil;</li>
+                        <li><b>Pasul 5:</b> se stabilește ordinul/clasa de complexitate.</li>
+                    </ul>
+                    <p>
+                        Notația pentru reprezentarea complexității algoritmilor este O (Big O Notation) și reprezintă ordinul de complexitate al algoritmului. Notația O servește la identificarea cazului cel mai defavorabil. <br>
+                        Timpul estimat de calcul se trece sub formă aproximativă: O(număr estimat de execuții ale operației de bază).
+                        <br>
+                        Deci, pentru un algoritm care execută aproximativ n operații de bază, complexitatea sa se notează O(n).
+                    </p>
+                    <h3>Complexitatea constantă</h3>
+                    <p>
+                        Algoritmii care au un timp de execuție constant, indiferent de dimensiunea datelor de intrare.
+                        <br>
+                        De exemplu, accesarea unui element dintr-un array prin index sau testarea unui numar par.
+                    </p>
+                    <h3>Complexitatea logaritmică - O(log n)</h3>
+                    <p>
+                        Timpul de execuție crește logaritmic cu dimensiunea datelor de intrare.
+                        <br>
+                        De exemplu, căutarea binară într-un array sortat.
+                    </p>
+                    <h3>Complexitatea liniară</h3>
+                    <p>
+                        Algoritmii care necesită un timp de execuție proporțional cu dimensiunea datelor de intrare.
+                        <br>
+                        De exemplu, parcurgerea unui array pentru a găsi un element.
+                    </p>
+                    <h3>Complexitatea sublinară - O(√n), O(log log n) sau O(n^c) (pentru c&lt;1 )</h3>
+                    <p>
+                        Timpul de execuție crește mai lent decât liniar.
+                        <br>
+                        De exemplu, algoritmul de aflare a divizorilor unui număr sau verificarea dacă un număr este prim.
+                    </p>
+                    <h3>Complexitatea liniară-logaritmică - O(n log n)</h3>
+                    <p>
+                        Algoritmii care au un timp de execuție care crește liniar, dar cu un factor logaritmic.
+                        <br>
+                        De exemplu, algoritmii de sortare eficienți, cum ar fi sortarea prin fuziune (merge sort) sau sortarea rapidă (quick sort).
+                    </p>
+                    <h3>Complexitatea pătratică - O(n^2)</h3>
+                    <p>
+                        Algoritmii care necesită un timp de execuție proporțional cu pătratul dimensiunii datelor de intrare.
+                        <br>
+                        De exemplu, algoritmii de sortare prin selecție sau sortare prin inserție.
+                    </p>
+                    <h3>Complexitatea cubică - O(n^3)</h3>
+                    <p>
+                        Timpul de execuție crește cu cubul dimensiunii datelor de intrare.
+                        <br>
+                        De exemplu, algoritmii care implică parcurgerea a trei dimensiuni, cum ar fi înmulțirea a două matrici.
+                    </p>
+                    <h3>Complexitatea exponențială - O(2^n)</h3>
+                    <p>
+                        Timpul de execuție crește exponențial cu dimensiunea datelor de intrare.
+                        <br>
+                    De exemplu, problemele de combinatorică, cum ar fi problema rucsacului sau generarea tuturor submulțimilor. (sau turnurile din Hanoi)
+                    </p>
+                    <h3>Complexitatea factorială - O(n!)</h3>
+                    <p>
+                        Timpul de execuție crește cu factorialul dimensiunii datelor de intrare.
+                        <br>
+                        De exemplu, problemele de permutare, cum ar fi generarea permutărilor unei mulțimi.
+                    </p>
+                </article>
+                
+                <article>
+                    <h2>II. Complexitatea spațială</h2>
+                    <p>
+                        Complexitatea spațială se referă la cantitatea totală de memorie necesară pentru a rula un algoritm, inclusiv atât spațiul de stocare temporar (RAM), cât și cel permanent (spațiu pe disc). Este esențială pentru evaluarea eficienței unui algoritm, mai ales în contextul aplicațiilor care rulează pe dispozitive cu resurse limitate sau în scenarii de procesare a datelor mari.
+                    </p>
+                    <h3>Tipuri de spațiu</h3>
+                    <p>
+                        <b>Spațiu pe disc</b> - se referă la stocarea permanentă a datelor, cum ar fi fișierele și bazele de date. Acesta este important pentru aplicațiile care necesită persistență a datelor.
+                    </p>
+                    <p>
+                        <b>Memorie temporară (RAM)</b> - Aceasta este utilizată în timpul execuției algoritmului și include variabilele temporare, structurile de date auxiliare și stiva de apeluri în cazul algoritmilor recursivi.
+                    </p>
+                    <h3>Evaluarea necesarului de memorie</h3>
+                    <p>
+                        Pentru a evalua necesarul de memorie se calculează numărul de variabile nestructurate (întregi, reale, booleene, caracter) si se determină numărul de octeți necesari reprezentării fiecărei componente/variabile, apoi se inmultesc (număr octeți * număr componente).
+                    </p>
+                    <h3>Spațiul constant - O(1)</h3>
+                    <p>
+                        Un algoritm are complexitate spațială constantă dacă nu necesită spațiu suplimentar care depinde de dimensiunea datelor de intrare.
+                        <br>
+                        De exemplu, un algoritm care folosește un număr fix de variabile pentru a efectua calcule.
+                    </p>
+                    <h3>Spațiul liniar - O(n)</h3>
+                    <p>
+                        Un algoritm are complexitate spațială liniară dacă necesită un spațiu care crește proporțional cu dimensiunea datelor de intrare.
+                        <br>
+                        De exemplu, stocarea unui vector de dimensiune n.
+                    </p>
+                    <h3>Spațiul pătratic - O(n^2)</h3>
+                    <p>
+                        Un algoritm are complexitate spațială pătratică dacă necesită un spațiu care crește cu pătratul dimensiunii datelor de intrare.
+                        <br>
+                        De exemplu, o matrice de dimensiune n x n.
+                    </p>
+                    <h3>Spațiul recursiv</h3>
+                    <p>
+                        Algoritmii recursivi pot consuma spațiu suplimentar pe stiva de apeluri, ceea ce poate influența complexitatea spațială totală. Este important să se ia în considerare adâncimea recursiei și numărul de apeluri recursive.
+                    </p>
+                    <h3>Evaluarea necesarului de spatiu</h3>
+                    <p>
+                        Calcularea spațiului pe disc necesar pentru un algoritm sau o aplicație implică evaluarea cantității de date care trebuie stocate permanent. Aceasta include datele de intrare, datele de ieșire și orice alte informații care trebuie păstrate pe termen lung. Apoi se urmeaza aceeasi pasi ca la calculul complexitatii de memorie. 
+                    </p>
+                </article>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container grid">
+            <div class="logo flex">
+                <a href=""><img src="images/logo_white.png" alt="logo"></a>
+                <h4><a href="index.html">Algoritmi Fundamentali</a></h4>
+            </div>
+            <div class="socials flex">
+                <a href="https://facebook.com" target="_blank" rel="nofollow"><img src="images/fb.svg" alt=""></a>
+                <a href="https://x.com" target="_blank" rel="nofollow"><img src="images/x.svg" alt=""></a>
+                <a href="https://instagram.com" target="_blank" rel="nofollow"><img src="images/insta.svg" alt=""></a>
+                <a href="https://youtube.com" target="_blank" rel="nofollow"><img src="images/yt.svg" alt=""></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
