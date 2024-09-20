@@ -34,9 +34,12 @@ Continut
 
 https://www.ududec.com/wp-content/uploads/2013/09/18.-Analiza-eficientei-unui-algoritm.pdf
 
+https://www.liceulmoisil.ro/resurse/Algoritmi%20elementari.pdf
+
 https://www.cnchogastecuci.ro/portofoliu/solutii/Notiuni_teoretice.pdf
 
 https://www.isjbn.ro/sites/default/files/resurse-educationale-deschise/2018-05/Tehnici%20de%20sortare_cls%20IX-XI.pdf
 
 https://www.cs.ubbcluj.ro/~istvanc/cautarisortari.pdf
+
 
