@@ -44,18 +44,53 @@
     </header>
     <main>
         <div class="container">
-            <div class="alg-page">
-                <h1>Algoritmi elementari</h1>
+            <div class="alg-page alg-search">
+                <h1>Algoritmi de cautare</h1>
                 <i class="img"></i>
             </div>
             <div class="alg-articles">
                 <article>
+                    <h2>Căutare liniară sau secvenţială (linear search)</h2>
+                    <p>
+                        Se căuta elementul în șir și se returnează poziţia acestuia (dacă acesta există).
+                    </p>
+                    <pre><code>
+int lSearch(int a[], int n, int l){
+    int ind = -1;
+    for (int i = 0; i < l; i++)
+        if (a[i] == n){
+            ind = i;
+            break;
+        }
+    return ind;
+}
+                    </code></pre>
 
+                    <h2>Căutare binară (binary search)</h2>
+                    <p>
+                        Se determină în ce relaţie se află elementul aflat în mijlocul
+                        șirului cu elementul ce se caută. În urma acestei verificări căutarea
+                        se continuă doar într-o jumătate a șirului. În acest mod, prin
+                        înjumătăţiri succesive se micşorează volumul șirului rămas pentru
+                        căutare.
+                    </p>
+                    <pre><code>
+int binS(int a[], int it, int st, int dr){
+    if (st > dr)
+        return -1;
+
+    int mij = (st + dr) / 2;
+
+    if (a[mij] == it)
+        return mij;
+    else if (a[mij] > it)
+        return binS(a, it, st, mij-1);
+    else
+        return binS(a, it, mij+1, dr);
+}
+                    </code></pre>
                 </article>
                 
-                <article>
-
-                </article>
             </div>
         </div>
     </main>

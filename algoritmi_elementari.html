@@ -44,7 +44,7 @@
     </header>
     <main>
         <div class="container">
-            <div class="alg-page">
+            <div class="alg-page alg-elementary">
                 <h1>Algoritmi elementari</h1>
                 <i class="img"></i>
             </div>
@@ -61,12 +61,12 @@
                         separat.
                     </p>
                     <pre><code>
-    int n;
-    cin &gt;&gt; n;
-    while (n){
-        cout &lt;&lt; n % 10 &lt;&lt; " ";
-        n = n / 10;
-    }
+int n;
+cin &gt;&gt; n;
+while (n){
+    cout &lt;&lt; n % 10 &lt;&lt; " ";
+    n = n / 10;
+}
                     </code></pre>
 
                     <h2>Determinarea divizorilor proprii ai unui număr natural dat</h2>
@@ -77,22 +77,22 @@
                     </p>
                     <p><b>Complexitate radical O(√n) </b>- cea mai eficienta in cazul de fata</p>
                     <pre><code>
-    int n;
-    cin >> n;
-    for (int d = 2; d*d &lt;= n; d++ ) {
-        if (n % d == 0)
-            cout &lt;&lt; d &lt;&lt; " ";
-        if (d != n / d)
-            cout &lt;&lt; n/d;
-    }
+int n;
+cin >> n;
+for (int d = 2; d*d &lt;= n; d++ ) {
+    if (n % d == 0)
+        cout &lt;&lt; d &lt;&lt; " ";
+    if (d != n / d)
+        cout &lt;&lt; n/d;
+}
                     </code></pre>
                     <p><b>Complexitate liniara O(n)</b></p>
                     <pre><code>
-    int n;
-    cin &gt;&gt; n;
-    for (int d = 2; d &lt; n/2; d++)
-        if (n % d == 0)
-            cout &lt;&lt; d &lt;&lt; " ";
+int n;
+cin &gt;&gt; n;
+for (int d = 2; d &lt; n/2; d++)
+    if (n % d == 0)
+        cout &lt;&lt; d &lt;&lt; " ";
                     </code></pre>
                     <h2>Testul de număr prim</h2>
                     <p>Matematica ne spune că un număr
@@ -107,17 +107,20 @@
                         are cel puţin un divizor propriu,
                         atunci numărul nu este prim.</p>
                     <pre><code>
-    int n;
-    bool prim=1;
-    cin >> n;
-    for (int d = 2; d*d <= n && prim == 1; d++){
-        if (n / d == 0)
-            prim = 0;
+bool isPrime (int n){
+    if (n < 2)
+        return false;
+    
+    bool prim = true;
+    
+    for (int d = 2; d*d <= n; d++){
+        if (n%d == 0){
+            prim = false;
+            break;
+        }
     }
-    if (prim)
-        cout << "Este prim";
-    else
-        cout << "Nu este prim";
+    return prim;
+}
                     </code></pre>
 
                     <h2>Determinarea celui mai mare divizor comun a două numere naturale</h2>
@@ -132,14 +135,14 @@
                         0. Cel mai mare divizor comun va fi variabila a.
                     </p>
                     <pre><code>
-    int a, b;
-    cin >> a >> b;
-    while (b){
-        int r = a % b;
-        a = b;
-        b = r;
-    }
-    cout << a;
+int a, b;
+cin >> a >> b;
+while (b){
+    int r = a % b;
+    a = b;
+    b = r;
+}
+cout << a;
                     </code></pre>
                     <p><strong>Algoritmul scăderilor repetate</strong></p>
                     <p>
@@ -150,14 +153,14 @@
                         două numere a sau b.
                     </p>
                     <pre><code>
-    int a, b;
-    while (a != b){
-        if (a > b)
-            a = a - b;
-        else
-            b = b - a;
-    }
-    cout << a;
+int a, b;
+while (a != b){
+    if (a > b)
+        a = a - b;
+    else
+        b = b - a;
+}
+cout << a;
                     </code></pre>
 
                     <h2>Descompunerea în factori primi a unui număr natural</h2>
@@ -175,28 +178,28 @@
                         se trece apoi la următorul factor prim.
                     </p>
                     <pre><code>
-    int n, d = 3, p = 0;
-    cin >> n;
-    
-    // Tratarea factorului 2 pentru optimizare
-    while (n % 2 == 0) {
+int n, d = 3, p = 0;
+cin >> n;
+
+// Tratarea factorului 2 pentru optimizare
+while (n % 2 == 0) {
+    p++;
+    n = n / 2;
+}
+if (p)
+    cout << "2^" << p << " ";
+
+// Tratarea factorilor impari
+while (n > 1 && d*d <= n){
+    p = 0;
+    while (n % d == 0){
         p++;
-        n = n / 2;
+        n = n / d;
     }
     if (p)
-        cout << "2^" << p << " ";
-    
-    // Tratarea factorilor impari
-    while (n > 1 && d*d <= n){
-        p = 0;
-        while (n % d == 0){
-            p++;
-            n = n / d;
-        }
-        if (p)
-            cout << d << "^" << p << " ";
-        d+=2;
-    }
+        cout << d << "^" << p << " ";
+    d+=2;
+}
                     </code></pre>
 
                     <h2>Determinarea valorii minime/maxime dintr-un şir de numere</h2>
@@ -208,15 +211,15 @@
                         decât maximul, se înlocuieşte maximul.
                     </p>
                     <pre><code>
-    int n, a, max;
-    cin >> n >> a;
-    max = a;
-    for (int i = 2; i <= n; i++){
-        cin >> a;
-        if (max < a)
-            max = a;
-    }
-    cout << max;
+int n, a, max;
+cin >> n >> a;
+max = a;
+for (int i = 2; i <= n; i++){
+    cin >> a;
+    if (max < a)
+        max = a;
+}
+cout << max;
                     </code></pre>
                     <p><strong>Determinarea valorii minime</strong></p>
                     <p>
@@ -226,15 +229,15 @@
                         decât minimul, se înlocuieşte minimul.
                     </p>
                     <pre><code>
-    int n, a, min;
-    cin >> n >> a;
-    min = a;
-    for (int i = 2; i <= n; i++){
-        cin >> a;
-        if (min > a)
-            min = a;
-    }
-    cout << min;
+int n, a, min;
+cin >> n >> a;
+min = a;
+for (int i = 2; i <= n; i++){
+    cin >> a;
+    if (min > a)
+        min = a;
+}
+cout << min;
                     </code></pre>
 
                     <h2>Interschimbarea valorilor a două variabile</h2>
@@ -246,97 +249,120 @@
                         Pentru a face interschimbul putem vărsa paharul <b>a</b> în paharul <b>aux</b>, apoi paharul <b>b</b> în paharul <b>a</b> și
                         în final paharul <b>aux</b> în paharul <b>b</b>. </p>
                     <pre><code>
-    int a, b, aux;
-    cin >> a >> b;
-    aux = a;
+void swap(int& a, int& b){
+    int aux = a;
     a = b;
     b = aux;
+}
                     </code></pre>
                     <p><strong>Fara utilizarea unei variabile temporare</strong></p>
                     <pre><code>
-    int a, b, aux;
-    cin >> a >> b;
+void swap (int& a, int& b){
     a = a + b;
     b = a - b;
     a = a - b;
+}
                     </code></pre>
 
-                    <h2>Prelucrarea cifrelor unui număr natural</h2>
+                    <h2>Suma cifrelor unui număr natural</h2>
                     <pre><code>
-    int n, sum;
-    cin >> n;
-    sum = 0;
+int sum(int n){
+    int sum = 0;
     while (n){
-        sum = sum + n%10;
+        sum = sum + n % 10;
         n = n/10;
     }
-    cout << sum;
+    return sum;
+}
                     </code></pre>
 
                     <h2>Aflarea primei cifre a unui număr natural</h2>
                     <pre><code>
-    int n;
-    cin >> n;
+int primaCifra (int n){
     while (n > 9)
         n = n/10;
-    cout << n;
+    return n;
+}
                     </code></pre>
 
                     <h2>Determinarea oglinditului unui număr natural</h2>
                     <pre><code>
-    int long long n, ogl;
-    cin >> n;
-    ogl = 0;
-    while (n) {
-        ogl = ogl * 10 + n % 10;
-        n = n / 10;
+int oglindit(int n){
+    int ogl = 0;
+    while (n){
+        ogl = ogl * 10 + n%10;
+        n = n/10;
     }
-    cout << ogl;
+    return ogl;
+}
                     </code></pre>
 
-                    <h2>Palindrom</h2>
+                    <h2>Palindrom (număr)</h2>
                     <pre><code>
-    long long p, r;
-    cin >> p;
-    r = 0;
-    while (p > r){
+bool palindromNr (unsigned int n) {
+    unsigned int r = 0;
+    while (n > r){
         r = r * 10 + p % 10;
         p = p / 10;
     }
 
-    if (r == p || r / 10 == p)
-        cout << "Este palindrom";
+    if (p == r || r / 10 == p)
+        return true;
     else
-        cout << "Nu este palindrom";
+        return false;
+}
+                    </code></pre>
+
+                    <h2>Palindrom (string)</h2>
+                    <pre><code>
+int palindromStr (string& text) {
+    int i = 0, j = text.length()-1;
+    bool palindrom = true;
+    while (i < j){
+        if (text[i] != text[j]){
+            palindrom = false;
+            break;
+        }
+        i++;
+        j--;
+    }
+    return palindrom;
+}
                     </code></pre>
 
                     <h2>Cel mai mic multiplu comun (cmmmc)</h2>
                     <pre><code>
-    int a, b, p, r;
-    cin >> a >> b;
-    p = a * b;
-
+int cmmmc (int a, int b){
+    int p, r;
+    p = a * b
     while (b){
         r = a % b;
         a = b;
         b = r;
     }
-    cout << p / a;
+    return p / a;
+}
                     </code></pre>
 
                     <h2>Numărul de elemente divizibile cu k intr-un interval</h2>
+                    <p><strong>Numar de elemente incluzand capetele</strong></p>
                     <pre><code>
-    int a, b, k;
-    cin >> a >> b >> k;
-    cout << b/k - (a-1)/k; // numar de elemente incluzand capetele
-    cout << (b-1)/k - a/k; // numar de elemente excluzand capetele
+int elemDivInterval (int a, int b){
+    return b/k - (a-1)/k;
+}
+                    </code></pre>
+                    <p><strong>Numar de elemente excluzand capetele</strong></p>
+                    <pre><code>
+int elemDivInterval (int a, int b){
+    return (b-1)/k - a/k;
+}
                     </code></pre>
 
                     <h2>Cifra de control</h2>
                     <p><strong>Varianta intuitiva</strong></p>
                     <pre><code>
-    int n, s;
-    cin >> n;
+int cifraControl (int n){
+    int s ;
     while (n > 9){
         s = 0;
         while (n > 0){
@@ -345,24 +371,52 @@
         }
         n = s;
     }
-    cout << n;
+    return n;
+}
                     </code></pre>
                     <p><strong>Metoda trunchierii</strong></p>
                     <pre><code>
-    int n;
-    cin >> n;
+int metodaTrunchierii (int n){
     while (n > 9)
-        n = n % 10 + n / 10;
-    cout << n;
+        n = n%10 + n/10;
+    return n;
+}
                     </code></pre>
                     <p><strong>Metoda verificarii divizibilitatii cu 9 (complexitate constanta)</strong></p>
                     <pre><code>
-    int n;
-    cin >> n;
+int divNoua (int n){
     if (n % 9 == 0)
-        cout << 9;
+        return 9;
     else
-        cout << n % 9;
+        return n % 9;
+}
+                    </code></pre>
+
+                    <h2>Fibonacci</h2>
+                    <p><strong>Metoda recursiva</strong></p>
+                    <pre><code>
+unsigned int fRec (unsigned int n){
+    if (n < 2)
+        return 1;
+    else
+        return fRec(n-1) + fRec(n-2);
+}
+                    </code></pre>
+                    <p><strong>Metoda liniara</strong></p>
+                    <pre><code>
+unsigned int fLin(unsigned int n){
+    if (n <= 2)
+        return 1;
+
+    unsigned int a = 1, b = 1, c, i;
+    for (i = 3; i<= n; i++){
+        c = a+b;
+        a = b;
+        b = c;
+    }
+
+    return c;
+}
                     </code></pre>
                 </article>
             </div>

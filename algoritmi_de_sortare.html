@@ -44,17 +44,178 @@
     </header>
     <main>
         <div class="container">
-            <div class="alg-page">
-                <h1>Algoritmi elementari</h1>
+            <div class="alg-page alg-sort">
+                <h1>Algoritmi de sortare</h1>
                 <i class="img"></i>
             </div>
             <div class="alg-articles">
                 <article>
+                    <h2>Metoda bulelor (bubble sort)</h2>
+                    <p>
+                        Algoritmul constă în parcurgerea tabloului A de mai multe ori, până când
+                        devine ordonat. La fiecare pas se compară două elemente alăturate si se interschimba daca este necesar.
+                        <br>
+                        Controlul acţiunii repetitive este dat de variabila booleană "schimbat",
+                        care la fiecare reluare a algoritmului
+                        primeşte valoarea iniţială adevărat, care se schimbă în fals dacă 
+                        s-a efectuat o interschimbare de două elemente alăturate.
+                        <br>
+                        Metoda bulelor nu este cea mai performantă modalitate de a ordona un şir
+                        cu multe elemente, dar în cazul şirurilor „aproape ordonate” poate deveni mai eficientă decât alte metode.
+                    </p>
+                    <pre><code>
+void bubbleSort(int n, int a[]){
+    bool schimbat;
+    do{
+        schimbat = false;
+        int i;
+        for(i = 0; i < n-1; i++){
+            if (a[i] > a[i+1]){
+                int aux = a[i];
+                a[i] = a[i+1];
+                a[i+1] = aux;
+                schimbat = true;
+            }
+        }
+    } while(schimbat);
+}
+                    </code></pre>
 
-                </article>
-                
-                <article>
+                    <h2>Sortarea prin selecție directă (selection sort)</h2>
+                    <p>
+                        Sortarea prin selecție directă (sau sortarea prin selecție) este un algoritm
+                        simplu de sortare care funcționează prin împărțirea unui tablou în două părți:
+                        o parte sortată și o parte nesortată.
+                        <br>
+                        Algoritmul selectează repetat cel mai mic
+                        (sau cel mai mare) element din partea nesortată și
+                        îl mută la sfârșitul părții sortate.
+                        <br>
+                        De exemplu, în caz de ordonare crescătoare, pornind de la primul element
+                        se caută valoarea minimă din tablou. Aceasta se aşează pe prima poziţie printr-o 
+                        interschimbare între elementul de pe prima poziţie şi elementul minim. Apoi, se 
+                        reia algoritmul, pornind de la a doua poziţie.
+                    </p>
+                    <pre><code>
+void selectionSort(int n, int a[]){
+    int aux, minIndex, i, j;
+    for (i = 0; i < n-1; i++){
+        minIndex = i;
+        for (j = i+1; j < n; j++){
+            if (a[minIndex] > a[j]){
+                minIndex = j;
+            }
+        }
 
+        if(minIndex != i){
+            aux = a[i];
+            a[i] = a[minIndex];
+            a[minIndex] = aux;
+        }
+    }
+}
+                    </code></pre>
+
+                    <h2>Sortarea prin inserţie (insertion sort)</h2>
+                    <p>
+                        Este un algoritm eficient pentru sortarea unui număr mic de obiecte. <br>
+                        Sortarea prin inserţie funcţionează în acelaşi fel
+                        în care mulţi oameni sortează un pachet de cărţi de joc. <br>
+                        Se începe cu pachetul aşezat
+                        pe masa cu faţa în jos şi cu mâna stânga goala. Apoi, luam câte o carte de pe masa şi
+                        o inseram în poziţia corectă în mâna stânga. Pentru a găsi poziţia corecta pentru o
+                        carte data, o comparăm cu fiecare dintre cărţile aflate deja în mâna stânga, de la
+                        dreapta la stânga (sau de la stânga la dreapta).
+                    </p>
+                    <pre><code>
+void insertionSort(int n, int a[]){
+    int i, j, aux;
+    for (i = 1; i < n; i++){
+        aux = a[i];
+        j = i - 1;
+        while(j >= 0 && a[j] > aux){
+            a[j+1] = a[j];
+            j--;
+        }
+        a[j+1] = aux;
+    }
+}
+                    </code></pre>
+
+                    <h2>Sortarea rapidă (quick sort)</h2>
+                    <p>
+                        Sortarea rapidă este un algoritm de sortare care, pentru un sir de n elemente,
+                        are un timp de execuţie Θ(n^2), în cazul cel mai defavorabil. <br> În ciuda acestei
+                        comportări proaste, în cazul cel mai defavorabil, algoritmul de sortare rapidă este
+                        deseori cea mai bună soluţie practică, deoarece are o comportare medie remarcabilă.
+                        Timpul său mediu de execuţie este O(n log n).
+                    </p>
+                    <pre><code>
+int partition(int arr[], int st, int end){
+    int pivot, pIndex;
+
+    pivot = arr[end];
+    pIndex = st;
+
+    for (int i = st; i < end; i++){
+        if (arr[i] < pivot){
+            swap(arr[i], arr[pIndex]);
+            pIndex++;
+        }
+    }
+    swap(arr[end], arr[pIndex]);
+    return pIndex;
+}
+    
+void quickSort(int arr[], int st, int end){
+    if (st < end){
+        int pivIndex;
+        pivIndex = partition(arr, st, end);
+        quickSort(arr, st, pivIndex-1);
+        quickSort(arr, pivIndex+1, end);
+    }
+}
+                    </code></pre>
+
+                    <h2>Sortarea prin interclasare (merge sort)</h2>
+                    <p>
+                        Pentru metoda de sortare prin interclasare principiul divide şi 
+                        stăpâneşte poate fi privit astfel: <br>
+                        <b>Divide:</b> Împarte şirul de n elemente care urmează a fi sortat în doua
+                        subşiruri de câte n/2 elemente.<br>
+                        <b>Stăpâneşte:</b> Sortează recursiv cele doua subşiruri utilizând sortarea prin interclasare.<br>
+                        <b>Combina:</b> Interclasează cele două subşiruri sortate pentru a produce rezultatul final.
+                    </p>
+                    <pre><code>
+void mergeSort(int a[], int st, int dr) {
+    if (st >= dr)
+        return;
+
+    int mij = (st + dr) / 2;
+    mergeSort(a, st, mij);
+    mergeSort(a, mij+1, dr);
+
+    int tmp[dr - st + 1];
+    int k = 0;
+    int i = st, j = mij+1;
+
+    while(i <= mij && j <= dr){
+        if (a[i] < a[j])
+            tmp[k++] = a[i++];
+        else
+            tmp[k++] = a[j++];
+    }
+
+    while(i <= mij)
+        tmp[k++] = a[i++];
+
+    while (j <= dr)
+        tmp[k++] = a[j++];
+
+    for (i = st, k = 0; i <= dr; i++, k++)
+        a[i] = tmp[k];
+}
+                    </code></pre>
                 </article>
             </div>
         </div>
