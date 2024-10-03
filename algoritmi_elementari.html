@@ -52,13 +52,13 @@
                 <article>
                     <h2>Separarea cifrelor unui număr</h2>
                     <p>
-                        Se va folosi rezultatul din matematică conform căruia restul împărţirii la 10 al unui
-                        număr întreg pozitiv îl reprezintă ultima cifră a numărului (cea mai puţin semnificativă),
-                        iar câtul împărţirii la 10, numărul fără ultima cifră. Repetând această operaţie cât timp
-                        numărul mai are cifre de separat, obţinem la fiecare pas o cifră a numărului, care poate
-                        fi prelucrată, de fiecare dată câtul obţinut devenind deîmpărţit. În algoritm, marcarea
-                        încheierii separării cifrelor se face când numărul dat devine 0, deci nu mai sunt cifre de
-                        separat.
+                        Se va folosi rezultatul din matematică conform căruia restul împărţirii la 10 
+                        al unui număr întreg pozitiv îl reprezintă ultima cifră a numărului (cea mai 
+                        puţin semnificativă), iar câtul împărţirii la 10, numărul fără ultima cifră. 
+                        Repetând această operaţie cât timp numărul mai are cifre de separat, obţinem la 
+                        fiecare pas o cifră a numărului, care poate fi prelucrată, de fiecare dată câtul 
+                        obţinut devenind deîmpărţit. În algoritm, marcarea încheierii separării cifrelor se 
+                        face când numărul dat devine 0, deci nu mai sunt cifre de separat.
                     </p>
                     <pre><code>
 int n;
@@ -76,6 +76,11 @@ while (n){
                         dacă n=32, divizorii proprii sunt: 2, 4, 8, 16.<br>
                     </p>
                     <p><b>Complexitate radical O(√n) </b>- cea mai eficienta in cazul de fata</p>
+                    <p>
+                        Se va crea o instrucțiune repetitivă „for” în care se vor parcurge numerele 
+                        de la 2 până la radical din n si la fiecare pas se va verifica daca numarul n 
+                        este divizibil cu d.
+                    </p>
                     <pre><code>
 int n;
 cin >> n;
@@ -95,17 +100,13 @@ for (int d = 2; d &lt; n/2; d++)
         cout &lt;&lt; d &lt;&lt; " ";
                     </code></pre>
                     <h2>Testul de număr prim</h2>
-                    <p>Matematica ne spune că un număr
-                        este prim dacă are doar doi divizori,
-                        pe 1 şi numărul însuşi, deci când nu
-                        are divizori proprii. Sunt mai multe
-                        modalităţi de a verifica dacă un
-                        număr dat este prim sau nu. Noi o
-                        vom folosi pe cea conform căreia
-                        dacă numărul nu are divizori proprii
-                        atunci este prim, în caz contrar, dacă
-                        are cel puţin un divizor propriu,
-                        atunci numărul nu este prim.</p>
+                    <p>
+                        Se va folosi metoda conform căreia dacă numărul nu are divizori proprii 
+                        atunci este prim, în caz contrar, dacă are cel puţin un divizor propriu, 
+                        atunci numărul nu este prim. Din nou se va crea instrucțiune repetitivă „for” 
+                        în care se vor parcurge numerele de la 2 până la radical din n si la fiecare pas se va verifica 
+                        daca numarul n este divizibil cu d.
+                    </p>
                     <pre><code>
 bool isPrime (int n){
     if (n < 2)
@@ -126,13 +127,10 @@ bool isPrime (int n){
                     <h2>Determinarea celui mai mare divizor comun a două numere naturale</h2>
                     <p><strong>Algoritmul lui Euclid</strong>- cel mai eficient in cazul de fata</p>
                     <p>
-                        Să presupunem că avem două numere naturale a şi b,
-                        pentru care trebuie să aflăm cel mai mare divizor
-                        comun(cmmdc). Se reţine în variabila r restul împărţirii
-                        lui a la b. Variabila a ia valoarea variabilei b iar b ia
-                        valoarea restului obţinut în urma împărţirii lui a la b.
-                        Aceste operaţii se execută cât timp b este diferit de
-                        0. Cel mai mare divizor comun va fi variabila a.
+                        Se reţine în variabila r restul împărţirii lui a la b. Variabila a ia valoarea 
+                        variabilei b iar b ia valoarea restului obţinut în urma împărţirii lui a la b. 
+                        Aceste operaţii se execută cât timp b este diferit de 0. La final, cel mai mare 
+                        divizor comun va fi variabila a.
                     </p>
                     <pre><code>
 int a, b;
@@ -146,11 +144,10 @@ cout << a;
                     </code></pre>
                     <p><strong>Algoritmul scăderilor repetate</strong></p>
                     <p>
-                        Algoritmul este următorul: cât timp cele două numere a
-                        şi b sunt diferite între ele, se scade din numărul mai
-                        mare numărul mai mic. În momentul în care cele două
-                        numere devin egale, cmmdc se află în oricare din cele
-                        două numere a sau b.
+                        Algoritmul este următorul: cât timp cele două numere a şi b sunt diferite 
+                        între ele, se scade din numărul mai mare numărul mai mic. În momentul în 
+                        care cele două numere devin egale, cmmdc se află în oricare din cele două 
+                        numere a sau b.
                     </p>
                     <pre><code>
 int a, b;
@@ -165,17 +162,15 @@ cout << a;
 
                     <h2>Descompunerea în factori primi a unui număr natural</h2>
                     <p>
-                        Vom trata mai intai factorul 2 separat pentru optimizare.
-                        Dacă n este par se imparte repetat cu 2 până când devine impar.
-                        Acest lucru va elimina toți factorii de 2 din n înainte de a începe căutarea altor factori primi.
-
-                        Se porneşte de la urmatorul factor prim posibil, 3;
-                        cât timp numărul dat este diferit de 1, se execută
-                        operaţiile:
-                        dacă factorul îl divide pe n îl afişăm
-                        cât timp numărul se împarte exact la un factor prim
-                        se execută împărţirea, se prelucrează factorul şi câtul devine deîmpărţit
-                        se trece apoi la următorul factor prim.
+                        Se va trata mai întâi factorul 2 separat pentru optimizare. Dacă n este par 
+                        se împarte repetat cu 2 până când devine impar şi se reține în variabila p de 
+                        câte ori se împarte. Acest lucru va elimina toți factorii de 2 din n înainte de a 
+                        începe căutarea altor factori primi.<br>
+                        Se porneşte de la urmatorul factor prim posibil, 3; cât timp numărul dat este diferit 
+                        de 1, se execută operaţiile: dacă factorul îl divide pe n se execută împărţirea până 
+                        când factorul nu-l mai divide pe n şi la fiecare împărţire incrementează variabila p, 
+                        se prelucrează factorul şi câtul devine deîmpărţit apoi se incrementează împartitorul cu 
+                        2 şi se trece la următorul factor prim.<br>
                     </p>
                     <pre><code>
 int n, d = 3, p = 0;
@@ -205,10 +200,10 @@ while (n > 1 && d*d <= n){
                     <h2>Determinarea valorii minime/maxime dintr-un şir de numere</h2>
                     <p><strong>Determinarea valorii maxime</strong></p>
                     <p>
-                        Se presupune că primul număr citit este maximul. Se citesc
-                        apoi, pe rând, numerele şi la fiecare pas se compară numărul
-                        citit cu maximul existent. Dacă numărul citit este mai mare
-                        decât maximul, se înlocuieşte maximul.
+                        Se presupune că primul număr citit este maximul. Se citesc apoi, 
+                        pe rând, numerele şi la fiecare pas se compară numărul citit cu 
+                        maximul existent. Dacă numărul citit este mai mare decât maximul, 
+                        se înlocuieşte maximul cu numărul citit.
                     </p>
                     <pre><code>
 int n, a, max;
@@ -223,10 +218,10 @@ cout << max;
                     </code></pre>
                     <p><strong>Determinarea valorii minime</strong></p>
                     <p>
-                        Se presupune că primul număr citit este minimul. Se citesc
-                        apoi, pe rând, numerele şi la fiecare pas se compară numărul
-                        citit cu minimul existent. Dacă numărul citit este mai mic
-                        decât minimul, se înlocuieşte minimul.
+                        Se presupune că primul număr citit este minimul. Se citesc apoi, 
+                        pe rând, numerele şi la fiecare pas se compară numărul citit cu minimul existent. 
+                        Dacă numărul citit este mai mic decât minimul, 
+                        se înlocuieşte minimul cu numărul citit.
                     </p>
                     <pre><code>
 int n, a, min;
@@ -242,12 +237,16 @@ cout << min;
 
                     <h2>Interschimbarea valorilor a două variabile</h2>
                     <p><strong>Utilizarea unei variabile temporare</strong></p>
-                    <p>Pentru a înțelege mai bine soluția vom face o analogie cu o altă problemă. <br>
-                        Să presupunem că avem două pahare <b>a</b> și <b>b</b>, paharul <b>a</b> plin cu apă și paharul <b>b</b> plin cu lapte. 
-                        Să presupunem că vrem să schimbăm conținutul paharelor astfel încât paharul <b>a</b> să conțină în final lapte și paharul <b>b</b> să conțină în final apă. Este
-                        clar că nu putem rezolva problema fără a ne folosi de un al treilea pahar, gol, să îi spunem <b>aux</b>, de la auxiliar.<br>
-                        Pentru a face interschimbul putem vărsa paharul <b>a</b> în paharul <b>aux</b>, apoi paharul <b>b</b> în paharul <b>a</b> și
-                        în final paharul <b>aux</b> în paharul <b>b</b>. </p>
+                    <p>
+                        Pentru a înțelege mai bine soluția vom face o analogie cu o altă problemă. <br>
+                        Să presupunem că avem două pahare a și b, paharul a plin cu apă și paharul b 
+                        plin cu lapte. Să presupunem că vrem să schimbăm conținutul paharelor astfel 
+                        încât paharul a să conțină în final lapte și paharul b să conțină în final apă. 
+                        Este clar că nu putem rezolva problema fără a ne folosi de un al treilea pahar, gol, 
+                        să îi spunem aux, de la auxiliar.<br>
+                        Pentru a face interschimbul putem vărsa paharul a în paharul aux, apoi paharul b 
+                        în paharul a și în final paharul aux în paharul b.<br>
+                    </p>
                     <pre><code>
 void swap(int& a, int& b){
     int aux = a;
@@ -256,6 +255,14 @@ void swap(int& a, int& b){
 }
                     </code></pre>
                     <p><strong>Fara utilizarea unei variabile temporare</strong></p>
+                    <p>
+                        În primul pas, se adună valorile lui a și b și se stochează rezultatul în a.<br>
+                        Pentru calcularea valorii lui b se scade valoarea originală a lui b din suma 
+                        stocată în a. Deoarece a conține acum a + b, scăzând b, obținem valoarea originală 
+                        a lui a. Astfel, b devine valoarea originală a lui a.<br>
+                        În ultimul pas, se scade noua valoare a lui b (care este acum valoarea originală a lui a)
+                         din suma stocată în a. Astfel, a devine valoarea originală a lui b.<br>
+                    </p>
                     <pre><code>
 void swap (int& a, int& b){
     a = a + b;
@@ -265,6 +272,13 @@ void swap (int& a, int& b){
                     </code></pre>
 
                     <h2>Suma cifrelor unui număr natural</h2>
+                    <p>
+                        Din nou se va folosi rezultatul din matematică conform căruia restul împărţirii la 10 
+                        al unui număr întreg pozitiv îl reprezintă ultima cifră a numărului, iar câtul împărţirii 
+                        la 10, numărul fără ultima cifră. Repetând această operaţie cât timp numărul mai are cifre 
+                        de separat, obţinem la fiecare pas o cifră a numărului, care va fi adunata cu variabila sum 
+                        inițiliazită cu 0.
+                    </p>
                     <pre><code>
 int sum(int n){
     int sum = 0;
@@ -277,6 +291,12 @@ int sum(int n){
                     </code></pre>
 
                     <h2>Aflarea primei cifre a unui număr natural</h2>
+                    <p>
+                        Din nou se va folosi rezultatul din matematică conform căruia restul împărţirii 
+                        la 10 al unui număr întreg pozitiv îl reprezintă ultima cifră a numărului, iar câtul 
+                        împărţirii la 10, numărul fără ultima cifră. Se repetă această operaţie cât timp numărul 
+                        este mai mare decat 9, iar la final se va obtine prima cifră a numărului.
+                    </p>
                     <pre><code>
 int primaCifra (int n){
     while (n > 9)
@@ -286,6 +306,15 @@ int primaCifra (int n){
                     </code></pre>
 
                     <h2>Determinarea oglinditului unui număr natural</h2>
+                    <p>Se declară o variabilă ogl și se inițializează cu 0. Aceasta va stoca inversul numărului.</p>
+                    <p>
+                        Din nou se va folosi rezultatul din matematică conform căruia restul împărţirii la 10 
+                        al unui număr întreg pozitiv îl reprezintă ultima cifră a numărului, iar câtul împărţirii 
+                        la 10, numărul fără ultima cifră. Se repetă această operaţie cât timp numărul mai are cifre 
+                        de separat, iar la final se va obtine prima cifră a numărului și obţinem la fiecare pas o 
+                        cifră a numărului, care va fi adunată cu variabila ogl care la rândul ei va fi înmulțită cu 10 
+                        la fiecare pas.
+                    </p>
                     <pre><code>
 int oglindit(int n){
     int ogl = 0;
@@ -298,6 +327,13 @@ int oglindit(int n){
                     </code></pre>
 
                     <h2>Palindrom (număr)</h2>
+                    <p>
+                        Se folosește o buclă while pentru inversarea cifrelor lui n. Cifrele inversate sunt 
+                        stocate în r. În fiecare iterație a buclei, cea mai puțin semnificativă cifră a lui n 
+                        este adăugată la capătul drept al lui r, iar n este împărțit la 10 pentru a elimina cea 
+                        mai puțin semnificativă cifră. Bucla continuă până când n este mai mic sau egal cu r, deci 
+                        până la jumătatea numărului de cifre.
+                    </p>
                     <pre><code>
 bool palindromNr (unsigned int n) {
     unsigned int r = 0;
@@ -314,6 +350,16 @@ bool palindromNr (unsigned int n) {
                     </code></pre>
 
                     <h2>Palindrom (string)</h2>
+                    <p>
+                        Se inițializează două variabile întregi, i cu 0 și j cu mărimea textului - 1. De asemenea, 
+                        se inițializează o variabilă booleană palindrom la true, presupunând că șirul este un palindrom.<br>
+                        În continuare, algoritmul intră într-o buclă while care continuă atât timp cât i este 
+                        mai mic decât j. În interiorul buclei, algoritmul verifică dacă caracterele de la 
+                        indicii i și j sunt egale. Dacă acestea nu sunt egale, algoritmul stabilește varibabila 
+                        palindrom cu false și iese din buclă. În caz contrar, algoritmul incrementează i și 
+                        decrementează j pentru a se deplasa spre centrul șirului, apoi se returnează valoarea 
+                        palindrom, care indică dacă șirul este un palindrom sau nu.<br>
+                    </p>
                     <pre><code>
 int palindromStr (string& text) {
     int i = 0, j = text.length()-1;
@@ -331,6 +377,11 @@ int palindromStr (string& text) {
                     </code></pre>
 
                     <h2>Cel mai mic multiplu comun (cmmmc)</h2>
+                    <p>
+                        Se calculează cel mai mare divizor comun a două numere întregi utilizând metoda 
+                        euclidiană, apoi se returnează valoarea produsului celor două variabile împărțite 
+                        la cel mai mare divizor comun.
+                    </p>
                     <pre><code>
 int cmmmc (int a, int b){
     int p, r;
@@ -382,7 +433,7 @@ int metodaTrunchierii (int n){
     return n;
 }
                     </code></pre>
-                    <p><strong>Metoda verificarii divizibilitatii cu 9 (complexitate constanta)</strong></p>
+                    <p><strong>Metoda verificării divizibilității cu 9 (complexitate constantă)</strong></p>
                     <pre><code>
 int divNoua (int n){
     if (n % 9 == 0)
@@ -393,7 +444,15 @@ int divNoua (int n){
                     </code></pre>
 
                     <h2>Fibonacci</h2>
-                    <p><strong>Metoda recursiva</strong></p>
+                    <p>Secvența Fibonacci este o serie de numere în care fiecare număr este suma celor două 
+                        precedente, începând de obicei cu 0 și 1.</p>
+                    <p><strong>Metoda recursivă</strong></p>
+                    <p>
+                        Se verifică inițial dacă n este mai mic de 2 și, dacă verificarea este adevărată, 
+                        se returnează 1, ceea ce corespunde cazurilor de bază din secvența Fibonacci.<br>
+                        Dacă n este mai mare sau egal cu 2, funcția se apelează de două ori cu argumentele 
+                        n-1 și n-2 și returnează suma acestor două apeluri recursive.<br>
+                    </p>
                     <pre><code>
 unsigned int fRec (unsigned int n){
     if (n < 2)
@@ -402,7 +461,16 @@ unsigned int fRec (unsigned int n){
         return fRec(n-1) + fRec(n-2);
 }
                     </code></pre>
-                    <p><strong>Metoda liniara</strong></p>
+                    <p><strong>Metoda liniară</strong></p>
+                    <p>
+                        Se verifică inițial dacă n este mai mic sau egal cu 2 și, dacă verificarea este adevărată, 
+                        se returnează 1, ceea ce corespunde cazurilor de bază din secvența Fibonacci.<br>
+                        Se utilizează o buclă pentru a calcula secvența Fibonacci iterativ. Aceasta inițializează 
+                        primii doi termeni ai secvenței, a și b, la 1. Apoi, pentru fiecare număr întreg i de la 
+                        3 la n, calculează următorul termen c ca sumă a celor doi termeni anteriori, a și b. Apoi 
+                        actualizează a și b pentru a fi ultimii doi termeni și repetă procesul până când ajunge la 
+                        ultimul termen.<br>
+                    </p>
                     <pre><code>
 unsigned int fLin(unsigned int n){
     if (n <= 2)

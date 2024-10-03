@@ -52,7 +52,18 @@
                 <article>
                     <h2>Căutare liniară sau secvenţială (linear search)</h2>
                     <p>
-                        Se căuta elementul în șir și se returnează poziţia acestuia (dacă acesta există).
+                        Căutarea liniară sau căutarea secventială este o metodă de căutare a unui 
+                        element într-un șir ordonat sau neordonat, în care se verifică fiecare element 
+                        al șirului, unul câte unul, începând de la primul element și continuă până la 
+                        ultimul element. Algoritmul de căutare liniară este simplu și intuitiv, dar poate 
+                        deveni ineficient dacă dimensiunea șirului este mare, deoarece timpul de execuție 
+                        crește direct proporțional cu numărul de elemente din șir.
+                    </p>
+                    <p>
+                        Timpul de execuție al acestei funcții este <b>O(n)</b>, deoarece în cel mai rău caz, 
+                        algoritmul trebuie să verifice fiecare element al șirului. Cu toate acestea, căutarea 
+                        liniară este utilă atunci când șirul este destul de mic sau când nu este cunoscut dacă 
+                        șirul este ordonat sau neordonat.
                     </p>
                     <pre><code>
 int lSearch(int a[], int n, int l){
@@ -68,11 +79,51 @@ int lSearch(int a[], int n, int l){
 
                     <h2>Căutare binară (binary search)</h2>
                     <p>
-                        Se determină în ce relaţie se află elementul aflat în mijlocul
-                        șirului cu elementul ce se caută. În urma acestei verificări căutarea
-                        se continuă doar într-o jumătate a șirului. În acest mod, prin
-                        înjumătăţiri succesive se micşorează volumul șirului rămas pentru
-                        căutare.
+                        Căutarea binară este o metodă de căutare eficientă care se bazează pe divizarea 
+                        în continuare a unei liste ordonate de elemente în părți egale, până când se 
+                        identifică locația elementului căutat sau se stabilește faptul că acesta nu se 
+                        află în listă. Această metodă este utilă atunci când lucrăm cu liste mari de 
+                        elemente, deoarece reduce numărul de comparații necesare pentru a găsi un element 
+                        specific. Iată cum funcționează pas cu pas:
+                        <br>
+                        <ul>
+                            <li>
+                                <b>-se începe cu o listă ordonată de elemente, de exemplu: 1, 2, 3, 4, 5, 6, 7, 8, 9;</b>
+                            </li>
+                            <li>
+                                <b>-se stabilește un element de căutat, de exemplu: 5;</b>
+                            </li>
+                            <li>
+                                <b>-se calculează mijlocul listei, adică poziția din mijloc a listei. În acest caz, 
+                                mijlocul este poziția 4 (pentru că lista are 9 elemente);</b>
+                            </li>
+                            <li>
+                                <b>-se compară elementul de căutat cu elementul din mijlocul listei. 
+                                Dacă sunt egale, atunci elementul a fost găsit și se oprește căutarea;</b>
+                            </li>
+                            <li>
+                                <b>-dacă elementul de căutat este mai mic decât elementul din mijlocul listei, 
+                                atunci se știe că elementul de căutat se află în prima jumătate a listei. 
+                                Se repetă procesul de calculare a mijlocului și de comparare, dar de 
+                                data aceasta doar pentru prima jumătate a listei;</b>
+                            </li>
+                            <li>
+                                <b>-dacă elementul de căutat este mai mare decât elementul din mijlocul listei, 
+                                atunci se știe că elementul de căutat se află în a doua jumătate a listei. 
+                                Se repetă procesul de calculare a mijlocului și de comparare, dar de data 
+                                aceasta doar pentru a doua jumătate a listei;</b>
+                            </li>
+                            <li>
+                                <b>-se repetă procesul până când elementul de căutat este găsit sau până 
+                                când lista este redusă la un singur element.</b>
+                            </li>
+                        </ul>
+                    </p>
+                    <p>
+                        Complexitatea algoritmului de căutare binară, care este de obicei , 
+                        unde n este numărul de elemente din lista. Această complexitate este 
+                        semnificativ mai mică decât cea a altor metode de căutare, cum ar fi căutarea 
+                        liniară, ceea ce o face mai eficientă pentru liste mari de elemente.
                     </p>
                     <pre><code>
 int binS(int a[], int it, int st, int dr){
